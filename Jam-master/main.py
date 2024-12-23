@@ -16,14 +16,14 @@ def play():
             pygame.display.set_caption("lol")
             self.clock = pygame.time.Clock()
             self.running = True
-
+            self.x = 3
             self.all_sprites = AllSprites()
             self.collision_sprites = pygame.sprite.Group()
             self.bullet_sprites = pygame.sprite.Group()
             self.enemy_sprites = pygame.sprite.Group()
             self.can_shoot = True
             self.shoot_time = 0
-            self.gun_cooldown = 300
+            self.gun_cooldown = 3
             # audio
             self.shoot_sound = pygame.mixer.Sound(join('audio', 'shoot.wav'))
             self.shoot_sound.set_volume(0.3)
@@ -54,6 +54,7 @@ def play():
         def input(self):
             if pygame.mouse.get_pressed()[0] and self.can_shoot:
                 self.shoot_sound.play()
+                print(self.gun.rect.center)
                 pos = self.gun.rect.center + self.gun.player_direction * 50
                 Bullet(self.bullet_surf, pos, self.gun.player_direction, (self.all_sprites, self.bullet_sprites))
                 self.can_shoot = False
@@ -94,8 +95,30 @@ def play():
                         bullet.kill()
 
         def player_collision(self):
-            if pygame.sprite.spritecollide(self.player, self.enemy_sprites, False, pygame.sprite.collide_mask):
+            collision_sprites = pygame.sprite.spritecollide(self.player, self.enemy_sprites, False,
+                                                            pygame.sprite.collide_mask)
+            if collision_sprites:
+                for sprite in collision_sprites:
+                    sprite.destroy()
+                    self.x -= 1
+            if self.x == 0:
                 self.running = False
+            print(self.x)
+
+        def health(self):
+            if self.x == 3:
+                im = pygame.image.load(join('images', 'Hp', 'heart.png'))
+                self.display_surface.blit(im, (50, 30))
+                self.display_surface.blit(im, (90, 30))
+                self.display_surface.blit(im, (130, 30))
+            elif self.x == 2:
+                im = pygame.image.load(join('images', 'Hp', 'heart.png'))
+                self.display_surface.blit(im, (50, 30))
+                self.display_surface.blit(im, (90, 30))
+            elif self.x == 1:
+                im = pygame.image.load(join('images', 'Hp', 'heart.png'))
+                self.display_surface.blit(im, (50, 30))
+            print('fseff')
 
         def run(self):
             while self.running:
@@ -120,6 +143,7 @@ def play():
                 self.display_surface.fill((0, 0, 0))
                 self.display_surface.fill('black')  # Очистка экрана
                 self.all_sprites.draw(self.player.rect.center)
+                self.health()
                 pygame.display.flip()  # Используем flip для обновления экрана
             pygame.quit()
 

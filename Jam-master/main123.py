@@ -71,7 +71,8 @@ class Game():
                 self.can_shoot = True
 
     def setup(self):  # draw map recode
-        map = load_pygame(join('data', 'maps', 'world.tmx'))
+        map = load_pygame(join('data', 'maps', 'world(2).tmx'))
+        map2 = load_pygame(join('data', 'maps', 'dungeon.tmx'))
 
         for x, y, image in map.get_layer_by_name("Ground").tiles():
             Sprite((x * TILE_SIZE, y * TILE_SIZE), image, self.all_sprites)
@@ -86,6 +87,9 @@ class Game():
                 self.gun = Gun(self.player, self.all_sprites)
             else:
                 self.spawn_positions.append((obj.x, obj.y))
+
+
+
 
     def bullet_collision(self):
         if self.bullet_sprites:

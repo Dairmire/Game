@@ -47,7 +47,7 @@ class Button():
                 self.sound.play()
             pygame.event.post(pygame.event.Event(pygame.USEREVENT, button=self))
 
-video_path = 'video/1run.mp4'
+video_path = 'video/runner.mp4'
 cap = cv2.VideoCapture(video_path)
 
 clock = pygame.time.Clock()
@@ -65,14 +65,15 @@ image = pygame.transform.scale(bg1, (800, 600))
 image123 = pygame.transform.scale(bg3, (800, 600))
 screen = pygame.display.set_mode(size)
 pygame.mixer.music.load('music/Menu_tr.mp3')
+pygame.mixer.music.set_volume(0)
 pygame.mixer.music.play(0)
 
 
 def menu():
     screen = pygame.display.set_mode(size)
-    st_but = Button(width / 2 - (252 / 2), 150, 252, 74, 'Новая игра', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
-    sett_but = Button(width / 2 - (252 / 2), 250, 252, 74, 'Настройки', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
-    exit_but = Button(width / 2 - (252 / 2), 350, 252, 74, 'Выйти', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
+    st_but = Button(width / 8 - (252 / 2), 270, 252, 74, 'Новая игра', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
+    sett_but = Button(width / 8 - (252 / 2), 370, 252, 74, 'Настройки', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
+    exit_but = Button(width / 8 - (252 / 2), 470, 252, 74, 'Выйти', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
     sp = [st_but, sett_but, exit_but]
 
     running = True

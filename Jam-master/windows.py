@@ -65,7 +65,7 @@ image = pygame.transform.scale(bg1, (800, 600))
 image123 = pygame.transform.scale(bg3, (800, 600))
 screen = pygame.display.set_mode(size)
 pygame.mixer.music.load('music/Menu_tr.mp3')
-pygame.mixer.music.play(-1)
+pygame.mixer.music.play(0)
 
 
 def menu():

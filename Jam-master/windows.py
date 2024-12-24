@@ -19,8 +19,8 @@ class Button():
         self.image1 = pygame.transform.scale(self.image1, (width, height))
         self.image_ch0 = self.image1
         if image_ch:
-            self.image_ch0 = pygame.load(image_ch)
-            self.image_ch0 = pygame.transform.scale(self.image.ch0, (width, height))
+            self.image_ch0 = pygame.image.load(image_ch)
+            self.image_ch0 = pygame.transform.scale(self.image_ch0, (width, height))
         self.rect = self.image1.get_rect(topleft=(x, y))
         self.sound = None
         if sound_but:
@@ -70,9 +70,9 @@ pygame.mixer.music.play(-1)
 
 def menu():
     screen = pygame.display.set_mode(size)
-    st_but = Button(width / 2 - (252 / 2), 150, 252, 74, 'Новая игра', 'menu_assets/1.png', 'music/kn2.mp3')
-    sett_but = Button(width / 2 - (252 / 2), 250, 252, 74, 'Настройки', 'menu_assets/1.png', 'music/kn2.mp3')
-    exit_but = Button(width / 2 - (252 / 2), 350, 252, 74, 'Выйти', 'menu_assets/1.png', 'music/kn2.mp3')
+    st_but = Button(width / 2 - (252 / 2), 150, 252, 74, 'Новая игра', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
+    sett_but = Button(width / 2 - (252 / 2), 250, 252, 74, 'Настройки', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
+    exit_but = Button(width / 2 - (252 / 2), 350, 252, 74, 'Выйти', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
     sp = [st_but, sett_but, exit_but]
 
     running = True
@@ -121,8 +121,8 @@ def menu():
 
 
 def sett():
-    exit_but = Button(width / 2 - (252 / 2), 450, 252, 74, 'Назад', 'menu_assets/1.png', 'music/kn2.mp3')
-    reg_but = Button(width / 2 - (252 / 2), 350, 240, 74, 'Регистрация', 'menu_assets/1.png', 'music/kn2.mp3')
+    exit_but = Button(width / 2 - (252 / 2), 450, 252, 74, 'Назад', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
+    reg_but = Button(width / 2 - (252 / 2), 350, 240, 74, 'Регистрация', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
     sp = [exit_but, reg_but]
     COLOR_INACTIVE = pygame.Color('lightskyblue3')
     COLOR_ACTIVE = pygame.Color('dodgerblue2')
@@ -223,10 +223,10 @@ def sett():
 
 
 def lev():
-    l_1 = Button(100, 150, 150, 131, '1', 'menu_assets/lev1.png', 'music/kn2.mp3')
-    l_2 = Button(350, 150, 150, 131, '2', 'menu_assets/lev1.png', 'music/kn2.mp3')
-    l_3 = Button(600, 150,150, 131, '3', 'menu_assets/lev1.png', 'music/kn2.mp3')
-    exit_but = Button(width / 2 - (252 / 2), 350, 252, 74, 'Назад', 'menu_assets/1.png', 'music/kn2.mp3')
+    l_1 = Button(100, 150, 150, 131, '1', 'menu_assets/lev1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
+    l_2 = Button(350, 150, 150, 131, '2', 'menu_assets/lev1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
+    l_3 = Button(600, 150,150, 131, '3', 'menu_assets/lev1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
+    exit_but = Button(width / 2 - (252 / 2), 350, 252, 74, 'Назад', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
     sp = [l_1, l_2, l_3, exit_but]
 
     running = True
@@ -260,7 +260,7 @@ def lev():
 
 def win(f):
     size = width, height = (800, 600)
-    exit_but = Button(width / 2 - (252 / 2), 450, 252, 74, 'Заново', 'menu_assets/1.png', 'music/kn2.mp3')
+    exit_but = Button(width / 2 - (252 / 2), 450, 252, 74, 'Заново', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
     sp = [exit_but]
     pygame.init()
     screen = pygame.display.set_mode(size)
@@ -300,7 +300,7 @@ def win(f):
 
 def lose(f):
     size = width, height = (800, 600)
-    exit_but = Button(width / 2 - (252 / 2), 450, 252, 74, 'Заново', 'menu_assets/1.png', 'music/kn2.mp3')
+    exit_but = Button(width / 2 - (252 / 2), 450, 252, 74, 'Заново', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
     sp = [exit_but]
     pygame.init()
     screen = pygame.display.set_mode(size)
@@ -341,7 +341,7 @@ def lose(f):
 def window(f):
     pygame.init()
     size = width, height = (800, 600)
-    exit_but = Button(width / 2 - (252 / 2), 450, 252, 74, 'Назад', 'menu_assets/1.png', 'music/kn2.mp3')
+    exit_but = Button(width / 2 - (252 / 2), 450, 252, 74, 'Назад', 'menu_assets/1.png', 'music/kn2.mp3', 'menu_assets/chang.png')
     sp = [exit_but]
     screen = pygame.display.set_mode(size)
     pygame.mixer.music.load('music/the witcher.mp3')
